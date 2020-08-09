@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: micro-goods
+eureka:
+  client:
+    service-url:
+       defaultZone: http://localhost:8080/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    lease-renewal-interval-in-seconds: 30 #心跳时间默认30s
+    lease-expiration-duration-in-seconds: 90 #删除服务时间默认90s
