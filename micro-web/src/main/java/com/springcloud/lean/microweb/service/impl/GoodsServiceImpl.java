@@ -1,9 +1,8 @@
 package com.springcloud.lean.microweb.service.impl;
 
-import com.netflix.discovery.converters.Auto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.springcloud.lean.microweb.service.TicketService;
+import com.springcloud.lean.microweb.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,24 +12,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 @Slf4j
-public class TicketServiceImpl implements TicketService {
+public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private RestTemplate restTemplate;
 
     AtomicInteger atomicInteger = new AtomicInteger();
-
-    @Override
-    @HystrixCommand
-    public String queryTicket() {
-        return "queryTicket";
-    }
-
-    @HystrixCommand
-    @Override
-    public String saveTicket() {
-        return "saveTicket";
-    }
 
     /**
      * Command属性

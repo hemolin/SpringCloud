@@ -1,9 +1,11 @@
 server:
   port: 8980
+  servlet:
+    context-path: /web/
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8080/eureka
+      defaultZone: http://admin:admin@localhost:8080/eureka
 spring:
   application:
     name: micro-web
