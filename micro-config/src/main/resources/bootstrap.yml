@@ -1,0 +1,40 @@
+server:
+  port: 9090
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8080/eureka/
+#      defaultZone: http://localhost:8080/eureka/
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/hemolin/SpringCloudRepo
+          username: hemolin
+          password: Hml518968
+          search-paths: config-repo
+          basedir: d:/Workspaces/github/cache
+          force-pull: true #强制从Github拉取
+  rabbitmq:
+    host: 192.168.11.199
+    password: admin
+    username: admin
+    port: 5672
+#生成秘钥指令
+#keytool -genkeypair -alias config-server -keyalg RSA -keystore config-server.jks -validity 365
+#keytool -importkeystore -srckeystore config-server.jks -destkeystore config-server.jks -deststoretype pkcs12
+#encrypt:
+#  key-store:
+#    location: config-server.jks
+#    alias: config-server
+#    password: 123456
+#    secret: 123456
+#  key: config-server
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露监控端口
