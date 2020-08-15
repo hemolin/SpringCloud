@@ -13,9 +13,9 @@ spring:
       server:
         git:
           uri: https://github.com/hemolin/SpringCloudRepo
+          search-paths: config-repo
           username: hemolin
           password: Hml518968
-          search-paths: config-repo
           basedir: d:/Workspaces/github/cache
           force-pull: true #强制从Github拉取
   rabbitmq:

@@ -4,18 +4,21 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:admin@localhost:8080/eureka/
+    registry-fetch-interval-seconds: 30
+  instance:
+    lease-expiration-duration-in-seconds: 90
 spring:
   application:
     name: micro-goods
   cloud:
     config:
-      uri: http://localhost:9090/ #配置中心的url，单机情况可指定
       profile: dev #远程仓库中的配置环境，格式为：服务名-环境.yml/properties，默认default
       label: master #远程仓库的分支，默认master
-#      discovery:
-#        enabled: true #开启配置服务发现，默认false
-#        service-id: config-server #服务名称，默认configserver
-      fail-fast: false #连接不上配置中心，快速响应失败，停止启动客户端
+      uri: http://localhost:9090/ #配置中心的url，单机情况可指定
+      discovery:
+        enabled: true #开启配置服务发现，默认false
+        service-id: config-server #服务名称，默认configserver
+#      fail-fast: true #连接不上配置中心，快速响应失败，停止启动客户端
       retry:
         max-attempts: 6 #连接配置中心失败的最大重试次数
         max-interval: 2000 #最大间隔时间
@@ -24,12 +27,15 @@ spring:
     bus:
       refresh:
         enabled: true #开启bus刷新，刷新配置url：http://localhost:8180/actuator/bus-refresh
-      trace:
-        enabled: true #开启消息跟踪
+#      trace:
+#        enabled: false #开启跟踪总线事件。
   rabbitmq:
     username: admin
     password: admin
     host: 192.168.11.199
     port: 5672
-#  profiles:
-#    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' #暴露刷新的地址。
