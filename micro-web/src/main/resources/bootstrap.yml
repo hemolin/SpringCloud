@@ -1,7 +1,7 @@
 server:
   port: 8980
-  servlet:
-    context-path: /web/
+#  servlet:
+#    context-path: /web/
 eureka:
   client:
     service-url:

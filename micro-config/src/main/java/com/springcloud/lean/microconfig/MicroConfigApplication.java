@@ -8,7 +8,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableConfigServer
 @EnableEurekaClient
-//@EnableHystrixDashboard
 public class MicroConfigApplication {
 
     public static void main(String[] args) {
